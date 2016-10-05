@@ -1,0 +1,16 @@
+<project name="Ant deployment" default="deploy" basedir="." xmlns:sf="antlib:com.salesforce">
+
+    <property file="build.properties"/>
+    <property environment="env"/>
+	
+	<target name="deploy">
+		<antcall target="deploymentRetrieve"/>
+		<sf:deploy username="${sf_target.username}" password="${sf_target.password}" serverurl="${sf_target.serverurl}" deployRoot="${sf.code_folder}" checkOnly="false" runAllTests="false" logType="Debugonly" pollWaitMillis="10000" maxPoll="100"/>
+	</target>
+
+	<target name="deploymentRetrieve">
+		<mkdir dir="${sf.code_folder}"/>
+		<sf:retrieve username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="${sf.code_folder}" unpackaged="package.xml" pollWaitMillis="10000" maxPoll="100" />
+	</target>
+
+</project>

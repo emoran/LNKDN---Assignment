@@ -1,0 +1,5 @@
+Dear {!Opportunity.OwnerFullName},
+
+Your contact role list has changed, please refer to the opportunity in the link bellow.
+
+https://na35.salesforce.com/{!Opportunity.Id}

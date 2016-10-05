@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <webLinks>
+        <fullName>Convert_Contact_to_Lead</fullName>
+        <availability>online</availability>
+        <description>Convert Contact to Lead</description>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Convert Contact to Lead</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/apex.js&quot;)}
+
+try{
+     var contactArray = new Array(&apos;{!Contact.Id}&apos;);
+     var result = sforce.apex.execute(&quot;ContactToLeadClass&quot;,&quot;convertContactToLead&quot;,{contactIds:contactArray});
+     window.location.href = &apos;/001/o&apos;;
+}
+catch(error){
+     alert(&apos;An error has ocurred: &apos;+error);
+}</url>
+    </webLinks>
+</CustomObject>
